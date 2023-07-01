@@ -46,6 +46,50 @@ public class TFIntMap extends TFStrategy{
         return Game.TFAction.search1;
     }
 
-    //TODO: Add a print so the unexploitable strategies can be understood
+    @Override
+    public String toString() {
+        String string = "";
+        Game.HLAction hlAction = Game.HLAction.hsignal2;
+        Game.HFAction hfAction = Game.HFAction.cycleRight;
+        Game.TLAction tlAction = Game.TLAction.tsignal1;
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 2; j++){
+               string += "h" + (i + 1) + " t" + (j + 1) +":";
+               char search = '2';
+               switch (i){
+                   case 0:
+                       hlAction = Game.HLAction.hsignal1;
+                       break;
+                   case 1:
+                       hlAction = Game.HLAction.hsignal2;
+                       break;
+                   case 2:
+                       hlAction = Game.HLAction.hsignal3;
+                       break;
+               }
+               switch (j){
+                   case 0:
+                       tlAction = Game.TLAction.tsignal1;
+                       break;
+                   case 1:
+                       tlAction = Game.TLAction.tsignal2;
+                       break;
+               }
+               switch (getAction(hlAction,hfAction,tlAction)){
+                   case search1:
+                       search = '1';
+                       break;
+                   case search2:
+                       search = '2';
+                       break;
 
+                       case search3:
+                       search = '3';
+                       break;
+               }
+               string += search + "\n";
+            }
+        }
+        return string;
+    }
 }

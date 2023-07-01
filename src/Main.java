@@ -24,6 +24,7 @@ public class Main {
             double ev = Game.getEV(hlStrategy,hfStrategy,tlStrategy,tfStrategy);
             if(ev < 0.5){
                 System.out.println(i);
+                System.out.println(tfStrategy);
                 System.out.println(ev);
                 losses++;
             }
